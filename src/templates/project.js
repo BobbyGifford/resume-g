@@ -32,7 +32,7 @@ export default function({ data }) {
             {description}
             <br />
             <br />
-            <Link className="btn btn-info" to="/projects/projects/">
+            <Link className="btn btn-info" to="/projects/">
               Back to projects
             </Link>
             {data.project.link ? (
