@@ -9,7 +9,7 @@ import SEO from "../components/seo";
 export default function({ data }) {
   const { title } = data.project;
   const { description } = data.project.description;
-  const { fluid } = data.project.image;
+  const { fluid } = data.project.image.fluid;
   console.log(data);
 
   return (
