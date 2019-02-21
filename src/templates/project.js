@@ -9,7 +9,7 @@ import SEO from "../components/seo";
 export default function({ data }) {
   const { title } = data.project;
   const { description } = data.project.description;
-  const { fluid } = data.project.image.fluid;
+  const { fixed } = data.project.image;
   console.log(data);
 
   return (
@@ -26,7 +26,7 @@ export default function({ data }) {
             <div className="row">
               <h1 className="col-4 offset-4">{title}</h1>
               <div className="col-8 offset-2">
-                <Img fluid={fluid} />
+                <Img fixed={fixed} />
               </div>
               <p className="mt-5">
                 {data.project.tech.map(skill => {
@@ -76,8 +76,8 @@ export const query = graphql`
         description
       }
       image {
-        fluid(maxWidth: 8000, quality: 100) {
-          ...GatsbyContentfulFluid_tracedSVG
+        fixed(width: 600, height: 400, quality: 100) {
+          ...GatsbyContentfulFixed_tracedSVG
         }
       }
     }
