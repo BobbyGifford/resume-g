@@ -63,21 +63,19 @@ export default function projects({ data }) {
                 >
                   <div className="bg-project-card text-center">
                     <h5>{project.title}</h5>
-                    <Link to={`/projects/${project.title}`}>
-                      <Img fixed={project.image.fixed} />
-                    </Link>
+                    <Img fixed={project.image.fixed} />
                     <div className="my-2 pb-2">
-                      <Link
-                        className="btn btn btn-outline-dark"
-                        to={`/projects/${project.title}`}
-                      >
-                        Details
-                      </Link>
-                      {project.link ? (
-                        <a
-                          className="btn btn-outline-success ml-3"
-                          href={project.link}
+                      <span className="d-none d-sm-none d-md-block">
+                        <Link
+                          className="btn btn btn-dark mb-3"
+                          to={`/projects/${project.title}`}
                         >
+                          Details
+                        </Link>
+                      </span>
+
+                      {project.link ? (
+                        <a className="btn btn-success" href={project.link}>
                           Visit
                         </a>
                       ) : null}

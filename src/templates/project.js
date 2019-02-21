@@ -9,7 +9,7 @@ import SEO from "../components/seo";
 export default function({ data }) {
   const { title } = data.project;
   const { description } = data.project.description;
-  const { fixed } = data.project.image;
+  const { fluid } = data.project.image;
   console.log(data);
 
   return (
@@ -23,31 +23,34 @@ export default function({ data }) {
         <div style={{ width: "100%" }}>
           <Navbar />
           <div className="container text-center">
-            <h1>{title}</h1>
-            <Img fixed={fixed} />
-            <p className="mt-3">
-              Tech used:
-              {data.project.tech.map(skill => {
-                return (
-                  <span key={skill} className="skill-badge ml-3">
-                    {skill}
-                  </span>
-                );
-              })}
-            </p>
-            <p className="project-description px-3">
-              {description}
-              <br />
-              <br />
-              <Link className="btn btn-info" to="/projects/">
-                Back to projects
-              </Link>
-              {data.project.link ? (
-                <a className="btn btn-success ml-3" href={data.project.link}>
-                  Visit
-                </a>
-              ) : null}
-            </p>
+            <div className="row">
+              <h1 className="col-4 offset-4">{title}</h1>
+              <div className="col-8 offset-2">
+                <Img fluid={fluid} />
+              </div>
+              <p className="mt-5">
+                {data.project.tech.map(skill => {
+                  return (
+                    <span key={skill} className="skill-badge ml-3">
+                      {skill}
+                    </span>
+                  );
+                })}
+              </p>
+              <p className="project-description px-3">
+                {description}
+                <br />
+                <br />
+                <Link className="btn btn-info" to="/projects/">
+                  Back to projects
+                </Link>
+                {data.project.link ? (
+                  <a className="btn btn-success ml-3" href={data.project.link}>
+                    Visit
+                  </a>
+                ) : null}
+              </p>
+            </div>
           </div>
         </div>
       </BackgroundImage>
@@ -73,8 +76,8 @@ export const query = graphql`
         description
       }
       image {
-        fixed(width: 600, quality: 100) {
-          ...GatsbyContentfulFixed_tracedSVG
+        fluid(maxWidth: 8000, quality: 100) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }

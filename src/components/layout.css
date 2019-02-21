@@ -51,6 +51,7 @@ body {
 }
 
 .project-description {
+  min-width: 60vw;
   padding-top: 10vh;
   min-height: 30vh;
   background: rgba(61, 81, 81, 0.8);
