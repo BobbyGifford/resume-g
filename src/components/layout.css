@@ -21,3 +21,31 @@ body {
   background-size: cover;
   justify-content: center;
 }
+
+.bg-project-card {
+  background-color: rgba(62, 81, 81, 0.2);
+}
+
+.btn-forest {
+  background-color: rgba(62, 81, 81, 0.2);
+  color: white;
+}
+
+.btn-forest:hover {
+  background-color: rgba(222, 203, 164, 0.1);
+  color: white;
+}
+
+.skill-badge {
+  color: antiquewhite;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(61, 81, 81, 0.7);
+}
+
+.project-description {
+  padding-top: 10vh;
+  min-height: 30vh;
+  background: rgba(61, 81, 81, 0.8);
+  color: antiquewhite;
+}
