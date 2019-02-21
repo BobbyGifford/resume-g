@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => (
           <Link
             className="btn btn-info"
             style={{ marginLeft: "5vw" }}
-            to="/projects/projects"
+            to="/projects/projects/"
           >
             View Projects
           </Link>
