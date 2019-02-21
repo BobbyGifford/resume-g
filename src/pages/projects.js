@@ -1,14 +1,16 @@
 import React from "react";
+import SEO from "../components/seo";
 import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
+import Navbar from "../components/Global/Navbar";
 
 export const query = graphql`
   {
-    img: file(relativePath: { eq: "mountain1.jpg" }) {
+    img: file(relativePath: { eq: "light-mountains.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 8000, quality: 100) {
+        fluid(maxWidth: 10000, quality: 100) {
           ...GatsbyImageSharpFluid_tracedSVG
         }
       }
@@ -43,11 +45,14 @@ export default function projects({ data }) {
 
   return (
     <Layout>
+      <SEO title="Projects" keywords={[`gatsby`, `application`, `react`]} />
       <BackgroundImage
         fluid={data.img.childImageSharp.fluid}
         className="bg-projects"
       >
         <div style={{ width: "100%" }}>
+          <Navbar />
+
           <h1 className="text-center">Projects</h1>
           <div className="row">
             {data.projects.edges.map(({ node: project }) => {
@@ -58,16 +63,21 @@ export default function projects({ data }) {
                 >
                   <div className="bg-project-card text-center">
                     <h5>{project.title}</h5>
-                    <Img fixed={project.image.fixed} />
+                    <Link to={`/projects/${project.title}`}>
+                      <Img fixed={project.image.fixed} />
+                    </Link>
                     <div className="my-2 pb-2">
                       <Link
-                        className="btn btn-dark"
+                        className="btn btn btn-outline-dark"
                         to={`/projects/${project.title}`}
                       >
                         Details
                       </Link>
                       {project.link ? (
-                        <a className="btn btn-success ml-3" href={project.link}>
+                        <a
+                          className="btn btn-outline-success ml-3"
+                          href={project.link}
+                        >
                           Visit
                         </a>
                       ) : null}

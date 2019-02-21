@@ -3,6 +3,8 @@ import Layout from "../components/layout";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
+import Navbar from "../components/Global/Navbar";
+import SEO from "../components/seo";
 
 export default function({ data }) {
   const { title } = data.project;
@@ -12,35 +14,41 @@ export default function({ data }) {
 
   return (
     <Layout>
+      <SEO title={title} keywords={[`gatsby`, `application`, `react`]} />
+
       <BackgroundImage
         fluid={data.img.childImageSharp.fluid}
         className="bg-projects"
       >
-        <div className="container text-center">
-          <h1>{title}</h1>
-          <Img fixed={fixed} />
-          <p className="mt-3">
-            {data.project.tech.map(skill => {
-              return (
-                <span key={skill} className="skill-badge ml-3">
-                  {skill}
-                </span>
-              );
-            })}
-          </p>
-          <p className="project-description">
-            {description}
-            <br />
-            <br />
-            <Link className="btn btn-info" to="/projects/">
-              Back to projects
-            </Link>
-            {data.project.link ? (
-              <a className="btn btn-success ml-3" href={data.project.link}>
-                Visit
-              </a>
-            ) : null}
-          </p>
+        <div style={{ width: "100%" }}>
+          <Navbar />
+          <div className="container text-center">
+            <h1>{title}</h1>
+            <Img fixed={fixed} />
+            <p className="mt-3">
+              Tech used:
+              {data.project.tech.map(skill => {
+                return (
+                  <span key={skill} className="skill-badge ml-3">
+                    {skill}
+                  </span>
+                );
+              })}
+            </p>
+            <p className="project-description px-3">
+              {description}
+              <br />
+              <br />
+              <Link className="btn btn-info" to="/projects/">
+                Back to projects
+              </Link>
+              {data.project.link ? (
+                <a className="btn btn-success ml-3" href={data.project.link}>
+                  Visit
+                </a>
+              ) : null}
+            </p>
+          </div>
         </div>
       </BackgroundImage>
     </Layout>
