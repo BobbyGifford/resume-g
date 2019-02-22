@@ -19,7 +19,7 @@ export const query = graphql`
       edges {
         node {
           id
-          updatedAt
+          createdAt
           title
           tech
           image {
@@ -39,7 +39,7 @@ export const query = graphql`
 
 export default function projects({ data }) {
   const order = data.projects.edges.sort((a, b) => {
-    return new Date(b.node.updatedAt) - new Date(a.node.updatedAt);
+    return new Date(b.node.createtdAt) - new Date(a.node.createdAt);
   });
   console.log(order);
 
