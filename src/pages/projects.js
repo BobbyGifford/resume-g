@@ -38,10 +38,7 @@ export const query = graphql`
 `;
 
 export default function projects({ data }) {
-  const order = data.projects.edges.sort((a, b) => {
-    return new Date(b.node.createtdAt) - new Date(a.node.createdAt);
-  });
-  console.log(order);
+  console.log(data.projects);
 
   return (
     <Layout>
